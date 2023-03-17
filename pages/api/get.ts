@@ -1,14 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { useRouter } from 'next/router'
-import Cors from 'cors'
 const axios = require('axios');
 const clientid = process.env.clientid;
 const clientsecret = process.env.clientsecret;
 // Initializing the cors middleware
 // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
-const cors = Cors({
-  methods: ['POST', 'GET', 'HEAD'],
-})
 
 
 // Helper method to wait for a middleware to execute before continuing
