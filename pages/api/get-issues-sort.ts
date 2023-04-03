@@ -9,21 +9,7 @@ const clientsecret = process.env.clientsecret;
 
 // Helper method to wait for a middleware to execute before continuing
 // And to throw an error when an error happens in a middleware
-function runMiddleware(
-  req: NextApiRequest,
-  res: NextApiResponse,
-  fn: Function
-) {
-  return new Promise((resolve, reject) => {
-    fn(req, res, (result: any) => {
-      if (result instanceof Error) {
-        return reject(result)
-      }
 
-      return resolve(result)
-    })
-  })
-}
 
 export default async function handler(
   req: NextApiRequest,
@@ -33,21 +19,22 @@ export default async function handler(
   // await runMiddleware(req, res, cors)
   let params = "https://github.com/login/oauth/access_token?client_id="+`${clientid}`+"&client_secret="+`${clientsecret}`+"&code="+req.query.code;
   let config = {
-    method: 'post',
+    method: 'get',
     maxBodyLength: Infinity,
-    url: params,
+    url: 'https://api.github.com/issues?sort='+req.query.sort,
     headers: { 
-      'Accept': 'application/json'
-    }
-    
+      'Accept': 'application/vnd.github+json', 
+      'Cache-Control': 'no-store', 
+      'Authorization': 'Bearer '+req.query.token, 
+    },
   };
   axios.request(config)
 .then((response) => {
-  console.log('get access token successfully');
+  console.log('get issues list successfully');
   res.json(response.data);
 })
 .catch((error) => {
-  console.log('fail to get token');
+  console.log('fail to get issues list');
 });
   // Rest of the API logic
   // res.json({ message: 'Hello Everyone!' })

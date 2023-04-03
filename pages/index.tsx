@@ -1,7 +1,9 @@
 export default function Index() {
   return (
     <p>
-      make a POST / GET / OPTIONS request to <b>/api/get</b>.
+      /api/get<br/>
+      /api/get-issues-sort<br/>
+      /api/validate<br/>
     </p>
   )
 }
