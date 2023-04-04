@@ -21,7 +21,7 @@ export default async function handler(
   let config = {
     method: 'get',
     maxBodyLength: Infinity,
-    url: 'https://api.github.com/search/issues?q='+`${req.query.query}`,
+    url: 'https://api.github.com/search/issues?q=is:issue+state:open+assignee:@me+'+`${req.query.query}`+' in:title',
     headers: { 
       'Accept': 'application/vnd.github+json', 
       'Cache-Control': 'no-store', 
