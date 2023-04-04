@@ -20,7 +20,7 @@ export default async function handler(
   let config = {
     method: 'get',
     maxBodyLength: Infinity,
-    url: 'https://api.github.com/issues?sort='+`${req.query.sort}`+'&per_page=10&page='+`${req.query.page}`,
+    url: 'https://api.github.com/issues?sort='+`${req.query.sort}`,
     headers: { 
       'Accept': 'application/vnd.github+json', 
       'Cache-Control': 'no-store', 
