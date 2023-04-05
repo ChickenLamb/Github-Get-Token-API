@@ -19,7 +19,7 @@ export default async function handler(
       let config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: `${req.query.labels_url}`,
+        url: 'https://api.github.com/repos/ChickenLamb/B1/issues/1/labels',
         headers: { 
           'Accept': 'application/vnd.github+json', 
           'Cache-Control': 'no-store', 
