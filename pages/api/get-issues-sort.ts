@@ -3,13 +3,6 @@ import { useRouter } from 'next/router'
 const axios = require('axios');
 const clientid = process.env.clientid;
 const clientsecret = process.env.clientsecret;
-// Initializing the cors middleware
-// You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
-
-
-// Helper method to wait for a middleware to execute before continuing
-// And to throw an error when an error happens in a middleware
-
 
 export default async function handler(
   req: NextApiRequest,
@@ -20,7 +13,7 @@ export default async function handler(
   let config = {
     method: 'get',
     maxBodyLength: Infinity,
-    url: 'https://api.github.com/issues?sort='+`${req.query.sort}`,
+    url: 'https://api.github.com/issues?sort='+`${req.query.sort}`+`${req.query.tag!==""?"&labels="+req.query.tag:""}`,
     headers: { 
       'Accept': 'application/vnd.github+json', 
       'Cache-Control': 'no-store', 
