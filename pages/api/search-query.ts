@@ -23,7 +23,8 @@ export default async function handler(
   };
   axios.request(config)
 .then((response) => {
-  console.log('query'+`${req.query.query}`+'validated successfully');
+  console.log(config.url);
+  console.log('query'+`${req.query.query}`+'seached successfully');
   res.json(response.data);
 })
 .catch((error) => {

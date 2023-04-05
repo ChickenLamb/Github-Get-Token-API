@@ -22,6 +22,7 @@ export default async function handler(
   };
   axios.request(config)
 .then((response) => {
+  console.log(config.url);
   console.log('get issues list successfully');
   res.json(response.data);
 })
