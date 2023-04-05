@@ -5,6 +5,7 @@ export default function Index() {
       /api/get-issues-sort<br/>
       /api/validate<br/>
       /api/search-query<br/>
+      /api/add-tag<br/>
     </p>
   )
 }

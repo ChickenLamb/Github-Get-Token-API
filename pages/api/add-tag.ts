@@ -8,26 +8,27 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  // Run the middleware
-  // await runMiddleware(req, res, cors)
- 
+
   let config = {
-    method: 'get',
+    method: 'post',
     maxBodyLength: Infinity,
-    url: 'https://api.github.com/octocat',
+    url: `${req.query.labels_url}`,
     headers: { 
-      'Accept': 'application/vnd.github+json', 
-      'Cache-Control': 'no-store', 
-      'Authorization': 'Bearer '+`${req.query.key}`, 
-    },
+        'Accept': 'application/vnd.github+json', 
+        'Cache-Control': 'no-store', 
+        'Authorization': 'Bearer '+`${req.query.token}`, 
+        'Content-Type': 'application/json', 
+      },
+      data : {labels:[`${req.query.tag}`]}
+    
   };
   axios.request(config)
 .then((response) => {
-  console.log('token'+`${req.query.key}`+'validated successfully');
+  console.log('add tag successfully');
   res.json(response.data);
 })
 .catch((error) => {
-  console.log('validate fail no action required');
+  console.log('fail to add tag');
 });
   // Rest of the API logic
   // res.json({ message: 'Hello Everyone!' })
