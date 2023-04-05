@@ -23,7 +23,7 @@ export default async function handler(
         headers: { 
           'Accept': 'application/vnd.github+json', 
           'Cache-Control': 'no-store', 
-          'Authorization': 'Bearer '+`${req.query.token}`, 
+          'Authorization': 'Bearer '+'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', 
           'Content-Type': 'application/json',
         },
         data : data
