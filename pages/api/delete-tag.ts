@@ -12,7 +12,7 @@ export default async function handler(
   let config = {
     method: 'delete',
     maxBodyLength: Infinity,
-    url: `${req.query.labels_url}`+'/'+`delete`,
+    url: `${req.query.labels_url}`+'/'+`${req.query.tag}`,
     headers: { 
         'Accept': 'application/vnd.github+json', 
         'Cache-Control': 'no-store', 
