@@ -13,7 +13,7 @@ export default async function handler(
   let config = {
     method: 'get',
     maxBodyLength: Infinity,
-    url: 'https://api.github.com/issues?sort='+`${req.query.sort}`+`${req.query.tag!==""?"&labels="+req.query.tag:""}`,
+    url: 'https://api.github.com/issues?sort='+`${req.query.sort}`+`${((req.query.tag!==undefined) || (req.query.tag!==""))?"&labels="+req.query.tag:""}`,
     headers: { 
       'Accept': 'application/vnd.github+json', 
       'Cache-Control': 'no-store', 
