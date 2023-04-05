@@ -14,7 +14,7 @@ export default async function handler(
   let config = {
     method: 'get',
     maxBodyLength: Infinity,
-    url: 'https://api.github.com/search/issues?q=is:issue+state:open+assignee:@me+'+`${req.query.query}`+' in:title'+'+sort:'+`${req.query.sort}`+`${((req.query.tag!==undefined) || (req.query.tag!==""))?"+label:"+req.query.tag:""}`,
+    url: 'https://api.github.com/search/issues?q=is:issue+state:open+assignee:@me+'+`${req.query.query}`+' in:title'+'+sort:'+`${req.query.sort}`+`${((req.query.tag!==undefined) && (req.query.tag!==""))?"+label:"+req.query.tag:""}`,
     headers: { 
       'Accept': 'application/vnd.github+json', 
       'Cache-Control': 'no-store', 
