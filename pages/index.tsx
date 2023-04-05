@@ -6,6 +6,7 @@ export default function Index() {
       /api/validate<br/>
       /api/search-query<br/>
       /api/add-tag<br/>
+      /api/delete-tag<br/>
     </p>
   )
 }
