@@ -23,7 +23,7 @@ export default async function handler(
   };
   axios.request(config)
 .then((response) => {
-  console.log('add tag successfully');
+  console.log('delete tag successfully ',req.query.label_url);
   res.json(response.data);
 })
 .catch((error) => {
